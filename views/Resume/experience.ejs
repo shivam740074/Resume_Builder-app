@@ -1,0 +1,94 @@
+<%- include('../partials/header')%>
+<div class="create_main">
+<div class="create_form container mt-5 p-3">
+  <ul class="d-flex justify-content-evenly fs-3">
+    <li><a href="/education">Eduaction</a></li>
+    <li><a href="/skill">Skill</a></li>
+    <li><a href="/project">Project</a></li>
+    <li><a href="/experience">Experience</a></li>
+    <li><a href="/interest">Interest</a></li>
+  </ul>
+  <hr />
+  <div class="card">
+    <h1 class="text-center mb-5">
+      EXPERIENCE
+      <hr />
+    </h1>
+    <form action="/add-experience" class="form-card" method="POST">
+      <div class="row justify-content-between text-left">
+        <div class="form-group col-sm-6 flex-column d-flex">
+          <label class="form-control-label px-3"
+            >Company Name<span class="text-danger"> *</span></label
+          >
+          <input
+            class="create_input"
+            type="text"
+            placeholder="Company Name"
+            name="company"
+          />
+        </div>
+        <div class="form-group col-sm-6 flex-column d-flex">
+          <label class="form-control-label px-3"
+            >Post<span class="text-danger"> *</span></label
+          >
+          <input
+            class="create_input"
+            type="text"
+            placeholder="Post"
+            name="Post"
+          />
+        </div>
+      </div>
+      <div class="row justify-content-between text-left">
+        <div class="form-group col-sm-6 flex-column d-flex">
+          <label class="form-control-label px-3"
+            >Field<span class="text-danger"> *</span></label
+          >
+          <input
+            class="create_input"
+            type="text"
+            placeholder="Field"
+            name="Field"
+          />
+        </div>
+        <div class="form-group col-sm-6 flex-column d-flex">
+          <label class="form-control-label px-3"
+            >Working period<span class="text-danger"> *</span></label
+          >
+          <input
+            class="create_input"
+            type="text"
+            placeholder="Working period"
+            name="year"
+          /><br />
+          <br />
+        </div>
+      </div>
+      <div class="row justify-content-end">
+        <div class="form-group col-sm-6">
+          <button type="submit" class="add_skill-btn">Add Experience</button>
+        </div>
+      </div>
+    </form>
+    <hr />
+    <div class="d-flex flex-wrap">
+        <% user.experience.forEach((e, i)=> { %>
+        <div class="card me-3 mb-3" style="width: 18rem">
+          <div class="card-body">
+            <h5 class="card-title"><%= e.company%></h5>
+            <h6 class="card-subtitle mb-2 text-muted">FIELD-<%= e.Field%></h6>
+            <h6>POST-<%= e.Post%></h6>
+            <p class="card-text">DURATION- <%= e.year%></p>
+            <a href="/delete-exp/<%= i%>" class="create_card-btn card-link"
+              >Remove</a
+            >
+          </div>
+        </div>
+        </div>
+  
+        <% })%>
+    </div>
+  
+    <%- include('../partials/footer')%>
+  </div>
+</div>

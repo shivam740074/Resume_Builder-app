@@ -1,0 +1,29 @@
+<%- include('./partials/header')%>
+<div class="login">
+    <form action="/signin" method="post" class="form" >
+        <div class="header">Sign In</div>
+        <div class="inputs">
+<input class="input" type="text" placeholder="Username" name="username">
+<input class="input" type="password" placeholder="Password" name="password">
+<div class="checkbox-container">
+    <label class="checkbox">
+    <input type="checkbox" id="checkbox">
+    </label>
+    <label for="checkbox" class="checkbox-text">Remember me</label>
+</div>
+<button class="signin-btn">signin</button>
+<a class="forget" href="/forgetpassword">Forget Password</a>
+<p class="signup-link">Don't have an account? <a href="/signup">Sign up</a></p>
+</div>
+</form>
+</div>
+
+<%- include('./partials/footer') %>
+
+
+  
+
+
+
+
+  

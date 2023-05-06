@@ -1,0 +1,92 @@
+<%- include('../partials/header')%>
+
+<div class="create_main">
+  <div class="create_form container mt-5 p-3">
+    <ul class="d-flex justify-content-evenly fs-3">
+      <li><a href="/education">Eduaction</a></li>
+      <li><a href="/skill">Skill</a></li>
+      <li><a href="/project">Project</a></li>
+      <li><a href="/experience">Experience</a></li>
+      <li><a href="/interest">Interest</a></li>
+    </ul>
+<hr/>
+    <div class="card">
+      <h1 class="text-center mb-5">EDUCATION <hr/></h1>
+      <form action="/add-edu" class="form-card" method="POST">
+        <div class="row justify-content-between text-left">
+          <div class="form-group col-sm-6 flex-column d-flex">
+            <label class="form-control-label px-3"
+              >Degree Name<span class="text-danger"> *</span></label
+            >
+            <input
+              class="create_input"
+              type="text"
+              placeholder="Degree Name"
+              name="degree"
+            />
+          </div>
+          <div class="form-group col-sm-6 flex-column d-flex">
+            <label class="form-control-label px-3"
+              >University Name<span class="text-danger"> *</span></label
+            >
+            <input
+              class="create_input"
+              type="text"
+              placeholder="University Name"
+              name="university"
+            />
+          </div>
+        </div>
+        <div class="row justify-content-between text-left">
+          <div class="form-group col-sm-6 flex-column d-flex">
+            <label class="form-control-label px-3"
+              >Year<span class="text-danger"> *</span></label
+            >
+            <input
+              class="create_input"
+              type="text"
+              placeholder="Year"
+              name="year"
+            />
+          </div>
+          <div class="form-group col-sm-6 flex-column d-flex">
+            <label class="form-control-label px-3"
+              >Grade<span class="text-danger"> *</span></label
+            >
+            <input
+              class="create_input"
+              type="text"
+              placeholder="Grade/Percentage"
+              name="grade"
+            />
+          </div>
+        </div>
+        <div class="row justify-content-end">
+          <div class="form-group col-sm-6">
+            <button type="submit" class="add_skill-btn">Add Skills</button>
+          </div>
+        </div>
+      </form>
+      <hr />
+      <div class="d-flex flex-wrap">
+        <% user.education.forEach((e, i)=> { %>
+        <div class="card me-3 mb-3" style="width: 18rem">
+          <div class="card-body">
+            <h5 class="card-title"><%= e.degree%></h5>
+            <h6 class="card-subtitle mb-2 text-muted">
+              <%= e.institute%> - <%= e.year%> | <%= e.university%>
+            </h6>
+            <p class="card-text">CGPA/PERCENT <%= e.grade%></p>
+            <a href="/delete-edu/<%= i%>" class="create_card-btn card-link"
+              >Remove</a
+            >
+          </div>
+        </div>
+
+        <% })%>
+      </div>
+    </div>
+  </div>
+
+  <%- include('../partials/footer')%>
+</div>

@@ -1,0 +1,117 @@
+<%- include('./partials/header')%>
+<div class="container bg-opacity-50">
+  <div class="d-flex w-100">
+    <div class="d-flex mb-1 w-75 p-5">
+      <div class="profile-img me-5">
+        <img
+          style="object-fit: cover"
+          class="profile-img rounded-circle profilePic"
+          height="120"
+          width="120"
+          src="/images/<%= user.avatar%>"
+          alt=""
+        />
+        <form action="/upload" method="post" enctype="multipart/form-data">
+          <input class="d-none uploadImg" name="avatar" type="file" />
+          <button class="upload-btn">Upload Image</button>
+        </form>
+      </div>
+      <div>
+        <h1 class="fs-1 fw-bold"><%= user.username%></h1>
+        <h3 class="fs-4 fw-semibold"><%= user.email%></h3>
+        <p>
+          <small class="text-muted">
+            <a
+              class="text-decoration-none text-dark fs-1"
+              href="<%= user.links.linkedin%>"
+              ><i class="ri-linkedin-box-fill"></i
+            ></a>
+
+            <a
+              class="text-decoration-none text-dark fs-1 ms-3"
+              href="<%= user.links.github%>"
+              ><i class="ri-github-fill"></i
+            ></a>
+
+            <a
+              class="text-decoration-none text-dark fs-1 ms-3"
+              href="<%= user.links.behance%>"
+              ><i class="ri-behance-fill"></i
+            ></a>
+          </small>
+        </p>
+      </div>
+    </div>
+
+    <div class="signout_reset-btn">
+      <a class="signout_btn fs-4 w-100" href="/signout">signout</a
+      ><br /><br /><br />
+      <a class="reset_btn fs-4 w-100" href="/resetpassword"
+        >Reset Password</a
+      ><br />
+    </div>
+  </div>
+
+  <form class="profile_form" action="/update/<%= user._id%>" method="POST">
+    <input
+      class="profile-input"
+      type="text"
+      placeholder="username"
+      name="username"
+      value="<%= user.username%>"
+    />
+    <input
+      class="profile-input"
+      type="email"
+      placeholder="email"
+      name="email"
+      value="<%= user.email%>"
+    />
+
+    <input
+      class="profile-input"
+      type="text"
+      placeholder="contact"
+      name="contact"
+      value="<%= user.contact%>"
+    />
+
+    <label class="link-btn" for="">Links</label>
+    <input
+      class="profile-input"
+      type="url"
+      placeholder="https://linkedin.com"
+      name="linkedin"
+      value="<%= user.links.linkedin%>"
+    />
+    <input
+      class="profile-input"
+      type="url"
+      placeholder="https://github.com"
+      name="github"
+      value="<%= user.links.github%>"
+    />
+    <input
+      class="profile-input"
+      type="url"
+      placeholder="https://behance.com"
+      name="behance"
+      value="<%= user.links.behance%>"
+    />
+
+    <button class="update_user-btn">
+      Update User Information
+    </button>
+  </form>
+</div>
+
+<script>
+  const profilePic = document.querySelector(".profilePic");
+  const uploadImg = document.querySelector(".uploadImg");
+  profilePic.addEventListener("click", () => {
+    console.log("hello");
+    uploadImg.click();
+  });
+</script>
+
+<%- include('./partials/footer')%>
